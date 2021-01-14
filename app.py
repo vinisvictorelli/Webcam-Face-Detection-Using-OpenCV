@@ -23,12 +23,13 @@ while True:
 
     faces = faceCascade.detectMultiScale(gray)
 
-    # Draw a rectangle around the faces
+    # Desenha retângulos para identificar rostos
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         faceROI = gray[y:y+h,x:x+w]
         #-- In each face, detect eyes
         eyes = eyesCascade.detectMultiScale(faceROI)
+        #Desenha um circulo identificando os olhos
         for (x2,y2,w2,h2) in eyes:
             eye_center = (x + x2 + w2//2, y + y2 + h2//2)
             radius = int(round((w2 + h2)*0.25))
@@ -42,9 +43,8 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-    # Display the resulting frame
+    # Mostra a imagem com as devidas identificações
     cv2.imshow('Video', frame)
 
-# When everything is done, release the capture
 video_capture.release()
 cv2.destroyAllWindows()
