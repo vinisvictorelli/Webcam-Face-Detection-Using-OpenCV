@@ -7,6 +7,7 @@ cascPath = "haarcascade_frontalface_default.xml"
 faceCascade = cv2.CascadeClassifier(cascPath)
 eyesCascade = cv2.CascadeClassifier(cascPath)
 
+#Define o dispositivo de captura para ser usado, caso não funcione apenas mude o numero entre parênteses para 0 ou números acima.
 video_capture = cv2.VideoCapture(1)
 anterior = 0
 
